@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"github.com/go-chi/chi/v5"
 	"log"
 	"net/http"
@@ -49,5 +48,5 @@ func main() {
 		log.Println("oops...")
 	}
 
-	fmt.Println("good bye")
+	log.Println("good bye")
 }
