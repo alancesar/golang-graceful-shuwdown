@@ -45,7 +45,7 @@ func main() {
 	defer cancel()
 
 	if err := server.Shutdown(ctx); err != nil {
-		log.Println("oops...")
+		log.Println(err)
 	}
 
 	log.Println("good bye")
