@@ -11,7 +11,8 @@ import (
 )
 
 func main() {
-	ctx := context.Background()
+	ctx, stop := signal.NotifyContext(ctx, syscall.SIGINT, syscall.SIGTERM)
+	defer stop()
 
 	mux := chi.NewMux()
 	mux.Get("/", func(w http.ResponseWriter, r *http.Request) {
@@ -19,9 +20,6 @@ func main() {
 		time.Sleep(5 * time.Second)
 		_, _ = w.Write([]byte("finished"))
 	})
-
-	ctx, stop := signal.NotifyContext(ctx, syscall.SIGINT, syscall.SIGTERM)
-	defer stop()
 
 	server := http.Server{
 		Addr:    ":8080",
