@@ -11,7 +11,7 @@ import (
 )
 
 func main() {
-	ctx, stop := signal.NotifyContext(ctx, syscall.SIGINT, syscall.SIGTERM)
+	ctx, stop := signal.NotifyContext(context.Background(), syscall.SIGINT, syscall.SIGTERM)
 	defer stop()
 
 	mux := chi.NewMux()
